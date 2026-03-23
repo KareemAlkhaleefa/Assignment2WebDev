@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel = "icon" href="images/favicon.ico" type="image/x-icon" />
+        <title>Static Website Homepage</title>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="script.js" defer></script>
+    </head>
+    <body class="overall_page">
+
+        <header>
+            <img class="title" src="Images/pixil-frame-0.png" alt="Trivia Blast Header"></img>
+        </header>
+        
+
+        <div class = "btn">
+            <button id="btn1" onclick= initQuiz();>PLAY</button>
+        </div>
+
+        <div class="bodyForGame">
+
+
+
+        <div class="start-container">
+            <div id="score-container">
+                <p>Score: <span id="score">0</span></p>
+            </div>
+
+            <div id="lives-container">
+                <p>Lives: <span id="lives">3</span></p>
+            </div>
+
+            <div id="timer-container">
+                <p>Time Remaining: <span id="timer">15</span> seconds</p>
+            </div>
+        </div>
+
+
+        <main class="quiz-container">
+            <div class="question">
+              <h2>What is the capital of France?</h2>
+            </div>
+            
+            <div class="answers">
+              <button class="answer-btn">A. Berlin</button>
+              <button class="answer-btn">B. Madrid</button>
+              <button class="answer-btn">C. Paris</button>
+              <button class="answer-btn">D. Rome</button>
+            </div>
+            
+        </main>
+        </div>
+    </body>
+</html>

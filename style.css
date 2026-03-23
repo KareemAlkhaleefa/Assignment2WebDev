@@ -1,0 +1,100 @@
+
+/* Luke CSS just for the button and the title */
+.overall_page{
+    background-color: antiquewhite;
+    color:black;
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 60px;
+}
+
+
+.title{
+    display: flex;
+    justify-content: center;    
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;    
+    text-align: center;  
+    font-family: fantasy;
+    font-size: 60px;
+}
+
+#btn1{
+    width: 350px;
+    height: 100px;
+    color: antiquewhite;
+    background-color: rgb(19, 19, 168);
+    font-size: 75px;
+    border: 5px solid black;
+    border-color: black;
+}
+
+/* Dakotas/Luke CSS for the actual game itself
+-Score
+-Lives
+-Time Remaining
+-Actual box of the questions being asked
+*/
+
+
+.bodyForGame {
+    font-family: fantasy;
+    font-size: 60px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    margin: 50px;
+  }
+
+  .quiz-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+
+  .question h2 {
+    margin-bottom: 20px;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+  }
+  .score-container,
+  .lives-container {
+    margin-bottom: 20px;
+  }
+
+  .answer-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .answer-btn:hover {
+    background-color: #0056b3;
+  }
+
+
+
+@media (max-width: 800px) { 
+    .title{
+        font-size: 50px;
+    }
+}
