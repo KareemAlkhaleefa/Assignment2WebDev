@@ -24,11 +24,24 @@ let game_over_noise = new Audio("Sounds/gameover.wav");
    before triggering a click on the corresponding answer button.
    ============================================================= */
 document.addEventListener("keydown", (e) => {
+  // Number keys 1-4 select answer buttons during gameplay
   const key = parseInt(e.key);
   if (key >= 1 && key <= 4) {
     const buttons = document.querySelectorAll(".answer-btn");
     if (buttons[key - 1] && !buttons[key - 1].disabled) {
       buttons[key - 1].click();
+    }
+  }
+
+  // Space bar triggers Play or Play Again buttons
+  if (e.key === " " || e.code === "Space") {
+    e.preventDefault();
+    const playBtn = document.getElementById("btn1");
+    const restartBtn = document.getElementById("restart-btn");
+    if (playBtn && playBtn.offsetParent !== null) {
+      playBtn.click();
+    } else if (restartBtn && restartBtn.offsetParent !== null) {
+      restartBtn.click();
     }
   }
 });
@@ -224,7 +237,7 @@ function displayQuestionAndAnswers() {
   // Assign each shuffled answer to a button and set up click handlers
   answerButtons.forEach((btn, index) => {
     var answerText = current_answers[index];
-    btn.innerHTML = answerText;
+    btn.innerHTML = `${answerText}<span class="key-hint">${index + 1}</span>`;
     btn.onclick = () => {
       if (current_answers[index] === current_question.correct_answer) {
         // Correct answer: play sound, highlight green, add streak bonus
