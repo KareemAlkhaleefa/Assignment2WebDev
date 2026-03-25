@@ -204,6 +204,7 @@ function startTimer() {
   let startTime = Date.now();
   let timerElement = document.getElementById("timer");
   let timeRemaining = 15;
+  timerElement.textContent = timeRemaining;
   timerInterval = setInterval(() => {
     timeRemaining--;
     timerElement.textContent = timeRemaining;
