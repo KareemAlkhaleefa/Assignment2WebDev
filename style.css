@@ -1,4 +1,14 @@
-/* Luke CSS just for the button and the title */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .overall_page {
   background-color: antiquewhite;
   color: black;
@@ -220,6 +230,28 @@
     background-color: #4c9aee;
 }
 
+.answer-btn {
+    position: relative;
+}
+
+.key-hint {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    opacity: 0.4;
+    font-weight: normal;
+}
+
+.key-hint-light {
+    display: block;
+    font-size: 11px;
+    opacity: 0.5;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
 #btn1:hover{
     background-color: #5a1db3;
 }
@@ -323,8 +355,167 @@ h2{
   font-weight: bold;
 }
 
-@media (max-width: 800px) {
+/* =============================================================
+   Responsive Design: Tablet (max-width: 768px)
+   ============================================================= */
+@media (max-width: 768px) {
+  .game-top-bar {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .top-bar-logo {
+    height: 30px;
+  }
+
+  #timer-container {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .progress-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  #progress-container {
+    gap: 4px;
+  }
+
+  .game-top-right {
+    gap: 10px;
+  }
+
+  #lives-container {
+    width: 130px;
+  }
+
+  .heart {
+    height: 16px;
+  }
+
+  .question-banner h2 {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .answer-btn {
+    font-size: 16px;
+  }
+
+  .selector-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .title {
-    font-size: 50px;
+    width: 250px;
+  }
+
+  #btn1 {
+    width: 200px;
+    height: 65px;
+    font-size: 32px;
+  }
+
+  .final-scores-container {
+    padding: 30px 40px;
+    margin: 20px;
+  }
+}
+
+/* =============================================================
+   Responsive Design: Mobile (max-width: 480px)
+   ============================================================= */
+@media (max-width: 480px) {
+  .game-top-bar {
+    padding: 6px 8px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .top-bar-logo {
+    height: 24px;
+  }
+
+  #timer-container {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  #progress-container {
+    display: none;
+  }
+
+  .game-top-right {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  #lives-container {
+    width: auto;
+  }
+
+  .heart {
+    height: 14px;
+  }
+
+  .question-banner {
+    padding: 15px 10px;
+  }
+
+  .question-banner h2 {
+    font-size: 18px;
+  }
+
+  .answers {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    padding: 5px 10px;
+  }
+
+  .answer-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 18px;
+    gap: 15px;
+  }
+
+  .title {
+    width: 200px;
+  }
+
+  #btn1 {
+    width: 180px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  #category-select,
+  #difficulty-select {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .final-scores-container {
+    padding: 20px 25px;
+    margin: 15px;
+    font-size: 16px;
+  }
+
+  #countdown-overlay {
+    font-size: 80px;
+  }
+
+  .top-bar-btn {
+    padding: 4px 10px;
+    font-size: 12px;
   }
 }

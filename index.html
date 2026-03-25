@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel = "icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <title>Trivia Blast</title>
         <link rel="stylesheet" href="style.css"/>
         <script src="script.js" defer></script>
@@ -12,8 +12,8 @@
 
         <header></header>
 
-        <div id="welcome-screen" class="btn">
-            <img class="title" src="Images/logo.png" alt="Trivia Blast Header">
+        <main id="welcome-screen" class="btn">
+            <h1><img class="title" src="Images/logo.png" alt="Trivia Blast"></h1>
             <div class="selector-container">
                 <label for="category-select">Choose a Topic:</label>
                 <select id="category-select">
@@ -22,9 +22,10 @@
                     <option value="11">Movies</option>
                     <option value="12">Music</option>
                     <option value="15">Video Games</option>
-                    <option value="17">Science & Nature</option>
+                    <option value="17">Science &amp; Nature</option>
                     <option value="23">History</option>
                 </select>
+                <label for="difficulty-select">Difficulty:</label>
                 <select id="difficulty-select">
                     <option value="">Any Difficulty</option>
                     <option value="easy">Easy</option>
@@ -32,64 +33,58 @@
                     <option value="hard">Hard</option>
                 </select>
             </div>
-            <button id="btn1" onclick="initQuiz()">PLAY</button>
-        </div>
+            <button id="btn1" onclick="initQuiz()">PLAY<span class="key-hint-light">space</span></button>
+        </main>
 
-
-
-
-        <!--Code for the container the actual game is played in-->
-        <div id="game-container" style="display:none;">
-            <div class="game-top-bar">
+        <main id="game-container" style="display:none;">
+            <nav class="game-top-bar">
                 <img class="top-bar-logo" src="Images/logo.png" alt="Trivia Blast" style="visibility:hidden;">
                 <div id="timer-container">
                     <span id="timer">15</span>s
                 </div>
                 <div id="progress-container">
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
-                    <span class="progress-dot"></span>
+                    <span class="progress-dot" aria-label="Question 1"></span>
+                    <span class="progress-dot" aria-label="Question 2"></span>
+                    <span class="progress-dot" aria-label="Question 3"></span>
+                    <span class="progress-dot" aria-label="Question 4"></span>
+                    <span class="progress-dot" aria-label="Question 5"></span>
+                    <span class="progress-dot" aria-label="Question 6"></span>
+                    <span class="progress-dot" aria-label="Question 7"></span>
+                    <span class="progress-dot" aria-label="Question 8"></span>
+                    <span class="progress-dot" aria-label="Question 9"></span>
+                    <span class="progress-dot" aria-label="Question 10"></span>
                 </div>
                 <div class="game-top-right">
                     <div id="score-container">Score: <span id="score">0</span></div>
                     <div id="lives-container">Lives:
-                        <img class="heart" src="Images/heart.png">
-                        <img class="heart" src="Images/heart.png">
-                        <img class="heart" src="Images/heart.png">
+                        <img class="heart" src="Images/heart.png" alt="Life">
+                        <img class="heart" src="Images/heart.png" alt="Life">
+                        <img class="heart" src="Images/heart.png" alt="Life">
                     </div>
                     <button class="top-bar-btn" onclick="location.reload()">Quit</button>
                 </div>
-            </div>
+            </nav>
 
-            <div class="question-banner">
+            <section class="question-banner">
                 <h2>Waiting for Question 1</h2>
-            </div>
+            </section>
 
-            <div class="answers">
+            <section class="answers">
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
-            </div>
-        </div>
-        
+            </section>
+        </main>
 
-        <!-- We want to hide this end game content to appear only when the game is over -->
-        <div id="game-over-container" style="display:none;">
+        <main id="game-over-container" style="display:none;">
             <div class="final-scores-container">
                 <h2 id="game-over-heading">Game Over!</h2>
                 <p id="final-score">Score: </p>
                 <p id="questions-correct">Correct Answers: </p>
                 <p id="high-score">Best Score: 0</p>
-                    <button id="restart-btn" onclick="location.reload()">Play Again</button>
+                <button id="restart-btn" onclick="location.reload()">Play Again<span class="key-hint-light">space</span></button>
             </div>
-        </div>
+        </main>
     </body>
 </html>
