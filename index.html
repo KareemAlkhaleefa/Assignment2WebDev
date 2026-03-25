@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel = "icon" href="images/favicon.ico" type="image/x-icon" />
-        <title>Static Website Homepage</title>
+        <title>Trivia Blast</title>
         <link rel="stylesheet" href="style.css"/>
         <script src="script.js" defer></script>
     </head>
@@ -12,7 +12,7 @@
 
         <!-- Header Image / Logo for the game -->
         <header>
-            <img class="title" src="Images/pixil-frame-0.png" alt="Trivia Blast Header"></img>
+            <img class="title" src="Images/logo.png" alt="Trivia Blast Header">
         </header>
         
 
@@ -43,50 +43,43 @@
 
         <!--Code for the container the actual game is played in-->
         <div id="game-container" style="display:none;">
-            <div class="start-container">
-                
+            <div class="game-top-bar">
+                <img class="top-bar-logo" src="Images/logo.png" alt="Trivia Blast" style="visibility:hidden;">
                 <div id="timer-container">
-                    <p>Time Remaining: <span id="timer">15</span> seconds</p>
+                    <span id="timer">15</span>s
                 </div>
-                <div id="score-container">
-                    <p>Score: <span id="score">0</span></p>
+                <div id="progress-container">
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                    <span class="progress-dot"></span>
+                </div>
+                <div class="game-top-right">
+                    <div id="score-container">Score: <span id="score">0</span></div>
+                    <div id="lives-container">Lives:
+                        <img class="heart" src="Images/heart.png">
+                        <img class="heart" src="Images/heart.png">
+                        <img class="heart" src="Images/heart.png">
+                    </div>
+                    <button class="top-bar-btn" onclick="location.reload()">Quit</button>
                 </div>
             </div>
 
-            <div id="progress-container">
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
-                <span class="progress-dot"></span>
+            <div class="question-banner">
+                <h2>Waiting for Question 1</h2>
             </div>
 
-            <main class="quiz-container">
-                <div class="question">
-                    <h2>Waiting for Question 1</h2>
-                </div>
-
-                <div class="answers">
-                    <button class="answer-btn">..</button>
-                    <button class="answer-btn">..</button>
-                    <button class="answer-btn">..</button>
-                    <button class="answer-btn">..</button>
-                </div>
-            </main>
-
-            <div class="start-container">
-                <div id="lives-container">
-                    <p>Lives:
-                        <img class="heart" src="Images/heart.png">
-                        <img class="heart" src="Images/heart.png">
-                        <img class="heart" src="Images/heart.png">
-                    </p>
-                </div>
+            <div class="answers">
+                <button class="answer-btn">..</button>
+                <button class="answer-btn">..</button>
+                <button class="answer-btn">..</button>
+                <button class="answer-btn">..</button>
             </div>
         </div>
         

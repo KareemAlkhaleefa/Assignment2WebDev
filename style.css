@@ -4,17 +4,26 @@
   color: black;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 60px;
+  font-size: 18px;
   border: 5px solid #007bff;
   padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 .title {
   display: block;
   margin: auto;
   width: 300px;
-  height: 300px;
+  height: auto;
   max-width: 100%;
+}
+
+.title.title-animating {
+  position: fixed;
+  z-index: 100;
+  transition: all 0.8s ease;
 }
 
 .btn {
@@ -24,18 +33,19 @@
   align-items: center;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 60px;
-  gap: 50px;
+  font-size: 24px;
+  gap: 30px;
 }
 
 #btn1 {
-  width: 350px;
-  height: 200px;
+  width: 200px;
+  height: 80px;
   color: antiquewhite;
   background-color: rgb(19, 19, 168);
-  font-size: 75px;
-  border: 5px solid black;
-  border-color: black;
+  font-size: 36px;
+  border: 3px solid black;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .selector-container{
@@ -45,8 +55,10 @@
     gap: 10px;
 }
 
-#category-select{
-    font-size: 20px;
+#category-select,
+#difficulty-select {
+    font-size: 18px;
+    padding: 5px;
 }
 
 /* Dakotas/Luke CSS for the actual game itself
@@ -57,62 +69,127 @@
 */
 
 
-.game-container {
-  background-color: #f0f0f0;
-  min-height: 100vh;
-  padding: 5px 5px;
+#game-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-
-.quiz-container {
-  background-color: antiquewhite;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  max-width: 600px; 
-  margin: 20px auto;
-  text-align: center;
+.game-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #46178f;
+  color: white;
+  font-size: 18px;
 }
 
-.question h2 {
+.top-bar-logo {
+  height: 40px;
+  width: auto;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+#timer-container {
   font-size: 24px;
-  line-height: 1.4;
-  margin-bottom: 25px;
+  font-weight: bold;
+  background-color: white;
   color: #333;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+#timer-container.timer-warning {
+  animation: timer-flash 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes timer-flash {
+  from { background-color: white; color: #dc3545; }
+  to { background-color: #dc3545; color: white; }
+}
+
+.top-bar-btn {
+  padding: 6px 14px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top-bar-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.game-top-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+#lives-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 170px;
+}
+
+.heart {
+  height: 20px;
+  width: auto;
+}
+
+.question-banner {
+  background-color: antiquewhite;
+  text-align: center;
+  padding: 30px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-banner h2 {
+  font-size: 36px;
+  line-height: 1.4;
+  color: #333;
+  margin: 0;
 }
 
 .answers {
-  display: flex;
-  flex-direction: column;
-}
-.score-container,
-.lives-container {
-  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 20px;
+  flex: 1;
+  min-height: 0;
 }
 
 .answer-btn {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 15px;
-    margin-bottom: 12px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .answer-btn:hover {
     background-color: #4c9aee;
-  }
-
-
-.start-container{
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 45px;
 }
 
 #btn1:hover{
@@ -136,39 +213,38 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
-    border: 5px solid black;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 20px auto;
 }
 
 #restart-btn{
-    width: 100px;
-    height: 55px;
+    width: 140px;
+    height: 50px;
     color: antiquewhite;
     background-color: rgb(19, 19, 168);
     font-size: 20px;
-    border: 5px solid black;
-    border-color: black;
+    border: 3px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 #restart-btn:hover{
     background-color: rgb(11, 93, 165);
 }
 
-h2{
-    color: red;
-}
-
-
 #progress-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 10px auto;
+    gap: 6px;
 }
 
 .progress-dot {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background-color: #ccc;
     border: 2px solid #999;
@@ -183,6 +259,17 @@ h2{
 .progress-dot.wrong {
     background-color: #dc3545;
     border-color: #bd2130;
+}
+
+#countdown-overlay {
+  flex: 1;
+  background-color: #46178f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120px;
+  color: white;
+  font-weight: bold;
 }
 
 @media (max-width: 800px) {

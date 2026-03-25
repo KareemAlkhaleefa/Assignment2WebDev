@@ -37,8 +37,8 @@ function nextQuestion() {
 
 /*Initialize the quiz, fetch the questions and answer from the api and call displayQuestionAndAnswers */
 async function initQuiz() {
-  document.getElementById("welcome-screen").style.display = "none";
-  document.getElementById("game-container").style.display = "block";
+  // Start fetching data immediately
+  const dataPromise = fetchData();
 
   const difficulty = document.getElementById("difficulty-select").value;
   if (difficulty === "easy") {
@@ -58,10 +58,64 @@ async function initQuiz() {
     livesContainer.appendChild(heart);
   }
 
-  const data = await fetchData();
+  // Capture logo position before layout changes
+  const logo = document.querySelector(".title");
+  const logoRect = logo.getBoundingClientRect();
+
+  // Move logo out of header into body so it stays visible
+  document.body.appendChild(logo);
+
+  // Pin logo at its current centered position
+  logo.style.position = "fixed";
+  logo.style.left = logoRect.left + "px";
+  logo.style.top = logoRect.top + "px";
+  logo.style.width = logoRect.width + "px";
+  logo.style.height = logoRect.height + "px";
+  logo.style.zIndex = "100";
+
+  // Switch to game layout (top bar logo hidden via inline style)
+  document.getElementById("welcome-screen").style.display = "none";
+  document.querySelector("header").style.display = "none";
+  document.querySelector(".overall_page").style.padding = "0";
+  document.querySelector(".overall_page").style.border = "none";
+  document.querySelector(".overall_page").style.margin = "0";
+  document.querySelector(".question-banner").style.display = "none";
+  document.querySelector(".answers").style.display = "none";
+  document.getElementById("game-container").style.display = "flex";
+
+  // Get the top bar logo's exact position as the animation target
+  const topBarLogo = document.querySelector(".top-bar-logo");
+  const targetRect = topBarLogo.getBoundingClientRect();
+
+  // Animate the home screen logo to the top bar logo position
+  logo.offsetHeight;
+  logo.classList.add("title-animating");
+  logo.style.left = targetRect.left + "px";
+  logo.style.top = targetRect.top + "px";
+  logo.style.width = targetRect.width + "px";
+  logo.style.height = targetRect.height + "px";
+
+  // Show countdown overlay (fills remaining space below top bar)
+  const overlay = document.createElement("div");
+  overlay.id = "countdown-overlay";
+  document.getElementById("game-container").appendChild(overlay);
+
+  // Countdown 3, 2, 1
+  for (let i = 3; i >= 1; i--) {
+    overlay.textContent = i;
+    await new Promise(r => setTimeout(r, 1000));
+  }
+
+  // Swap: reveal the real top bar logo, remove the animated one
+  topBarLogo.style.visibility = "";
+  logo.remove();
+  overlay.remove();
+  document.querySelector(".question-banner").style.display = "";
+  document.querySelector(".answers").style.display = "";
+
+  const data = await dataPromise;
   questions = data.results;
   displayQuestionAndAnswers();
-  
 }
 
 async function fetchData() {
@@ -103,7 +157,7 @@ function displayQuestionAndAnswers() {
   current_answers = current_answers.flat(Infinity);
   current_answers.sort(() => Math.random() - 0.5);
 
-  let question = document.querySelector(".question h2");
+  let question = document.querySelector(".question-banner h2");
   let answerButtons = document.querySelectorAll(".answer-btn");
 
   //start the timer for the question
@@ -159,9 +213,10 @@ function displayQuestionAndAnswers() {
         markDot(questionIndex, false);
          if (lives <= 0) {
           btn.disabled = true;
-          //stop the lives counter at 0;
           lives = 0;
-           gameOver();
+           setTimeout(() => {
+             gameOver();
+           }, 2000);
            return;
           }
 
@@ -195,6 +250,7 @@ function gameOver() {
       document.getElementById("game-over-heading").style.color = "green";
     } else {
       document.getElementById("game-over-heading").textContent = "Game Over and Nice Try!";
+      document.getElementById("game-over-heading").style.color = "red";
     }
 
     let highScore = localStorage.getItem("highScore") || 0;
@@ -222,17 +278,24 @@ function startTimer() {
   let startTime = Date.now();
   let timerElement = document.getElementById("timer");
   let timeRemaining = 15;
+  let timerContainer = document.getElementById("timer-container");
+  timerContainer.classList.remove("timer-warning");
   timerElement.textContent = timeRemaining;
   timerInterval = setInterval(() => {
     timeRemaining--;
     timerElement.textContent = timeRemaining;
+    if (timeRemaining <= 5) {
+      timerContainer.classList.add("timer-warning");
+    }
     if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       markDot(questionIndex, false);
       lives--;
       removeHeart();
       if (lives === 0) {
-        gameOver();
+        setTimeout(() => {
+          gameOver();
+        }, 2000);
         return;
       }
       nextQuestion();
