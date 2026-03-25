@@ -85,7 +85,7 @@ function displayQuestionAndAnswers() {
         //we want to reset the button colors after 2 seconds and then go to the next question
         setTimeout(() => {
           document.querySelectorAll(".answer-btn").forEach((button) => {
-            button.style.backgroundColor = "#007bff";
+            button.style.backgroundColor = "";
             button.disabled = false;
           });
           questionIndex++;
@@ -134,7 +134,7 @@ function displayQuestionAndAnswers() {
         //wait 2 seconds go to the next question reset the button colors and then go to the next question
         setTimeout(() => {
           document.querySelectorAll(".answer-btn").forEach((button) => {
-            button.style.backgroundColor = "#007bff";
+            button.style.backgroundColor = "";
             button.disabled = false;
           });
           questionIndex++;
