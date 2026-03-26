@@ -272,11 +272,11 @@ function displayQuestionAndAnswers() {
         clearInterval(timerInterval);
         btn.style.backgroundColor = "red";
 
-        // Reveal the correct answer
-        answerButtons.forEach((button) => {
-          if (button.innerHTML === current_question.correct_answer) {
-            button.style.backgroundColor = "green";
-          }
+        // Reveal the correct answer by highlighting it in green
+        answerButtons.forEach((button,i) => {
+            if (current_answers[i] === current_question.correct_answer) {
+              button.style.backgroundColor = "green";
+            }
         });
 
         lives--;
