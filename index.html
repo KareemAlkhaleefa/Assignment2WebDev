@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <meta charset="utf-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <link rel="icon" href="images/favicon_logo.ico" type="image/x-icon" >
         <title>Trivia Blast</title>
-        <link rel="stylesheet" href="style.css"/>
-        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+        <script type="module" src="script.js"></script>
     </head>
     <body class="overall_page">
 
@@ -34,25 +34,35 @@
                 </select>
             </div>
             <button id="btn1" onclick="initQuiz()">PLAY<span class="key-hint-light">space</span></button>
+            <a href="references.html">References</a>
+
+            <p>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px"
+                        src="https://jigsaw.w3.org/css-validator/images/vcss"
+                        alt="Valid CSS!" >
+                </a>
+            </p>
+                        
         </main>
 
-        <main id="game-container" style="display:none;">
+        <div id="game-container" style="display:none;">
             <nav class="game-top-bar">
                 <img class="top-bar-logo" src="Images/logo.png" alt="Trivia Blast" style="visibility:hidden;">
                 <div id="timer-container">
                     <span id="timer">15</span>s
                 </div>
                 <div id="progress-container">
-                    <span class="progress-dot" aria-label="Question 1"></span>
-                    <span class="progress-dot" aria-label="Question 2"></span>
-                    <span class="progress-dot" aria-label="Question 3"></span>
-                    <span class="progress-dot" aria-label="Question 4"></span>
-                    <span class="progress-dot" aria-label="Question 5"></span>
-                    <span class="progress-dot" aria-label="Question 6"></span>
-                    <span class="progress-dot" aria-label="Question 7"></span>
-                    <span class="progress-dot" aria-label="Question 8"></span>
-                    <span class="progress-dot" aria-label="Question 9"></span>
-                    <span class="progress-dot" aria-label="Question 10"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 1"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 2"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 3"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 4"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 5"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 6"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 7"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 8"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 9"></span>
+                    <span role="alert" class="progress-dot" aria-label="Question 10"></span>
                 </div>
                 <div class="game-top-right">
                     <div id="score-container">Score: <span id="score">0</span></div>
@@ -69,15 +79,15 @@
                 <h2>Waiting for Question 1</h2>
             </section>
 
-            <section class="answers">
+            <div class="answers">
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
                 <button class="answer-btn">..</button>
-            </section>
-        </main>
+            </div>
+        </div>
 
-        <main id="game-over-container" style="display:none;">
+        <div id="game-over-container" style="display:none;">
             <div class="final-scores-container">
                 <h2 id="game-over-heading">Game Over!</h2>
                 <p id="final-score">Score: </p>
@@ -85,6 +95,6 @@
                 <p id="high-score">Best Score: 0</p>
                 <button id="restart-btn" onclick="location.reload()">Play Again<span class="key-hint-light">space</span></button>
             </div>
-        </main>
+        </div>
     </body>
 </html>

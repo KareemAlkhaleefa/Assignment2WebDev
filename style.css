@@ -231,6 +231,9 @@
   .answer-btn:hover {
       background-color: #4c9aee;
   }
+  .answer-btn:focus{
+      background-color: #4c9aee;
+  }
 }
 
 .answer-btn {
@@ -263,6 +266,11 @@
     transform: translateY(2px);
     box-shadow: 0 2px 0 #2e0f5e;
 }
+
+#btn1:focus{
+    background-color: #5a1db3;
+}
+
 p{
     margin: 1px;
 }

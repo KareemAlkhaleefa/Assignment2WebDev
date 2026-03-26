@@ -2,7 +2,9 @@
    Global State
    Tracks the current game session: score, lives, question progress,
    and answer streak for the bonus multiplier.
+   Imports from streak.js (modules)
    ============================================================= */
+import { streakImage } from './streak.js';
 let score = 0;
 let lives = 3;
 let questionIndex = 0;
@@ -33,14 +35,17 @@ document.addEventListener("keydown", (e) => {
     }
   }
 
+  // Got rid of space bar start on home screen when not hovering
   // Space bar triggers Play or Play Again buttons
   if (e.key === " " || e.code === "Space") {
-    e.preventDefault();
-    const playBtn = document.getElementById("btn1");
+    //e.preventDefault();
+    //const playBtn = document.getElementById("btn1");
     const restartBtn = document.getElementById("restart-btn");
-    if (playBtn && playBtn.offsetParent !== null) {
-      playBtn.click();
-    } else if (restartBtn && restartBtn.offsetParent !== null) {
+    //if (playBtn && playBtn.offsetParent !== null) {
+      //playBtn.click();
+    //} 
+    // else
+    if (restartBtn && restartBtn.offsetParent !== null) {
       restartBtn.click();
     }
   }
@@ -246,6 +251,8 @@ function displayQuestionAndAnswers() {
         btn.style.backgroundColor = "green";
         streak++;
         score += 10 * streak;
+        //Display the streak gif if a streak occured
+        streakImage(streak);
         questionsAnswered += 1;
         document.querySelectorAll(".answer-btn").forEach((button) => {
           button.disabled = true;
@@ -269,6 +276,8 @@ function displayQuestionAndAnswers() {
         });
         wrong_answer_noise.play();
         streak = 0;
+        //Remove the streak gif if question answered wrong 
+        streakImage(streak);
         clearInterval(timerInterval);
         btn.style.backgroundColor = "red";
 
@@ -388,3 +397,6 @@ function startTimer() {
     }
   }, 1000);
 }
+
+//Since script.js is a module this is needed to be able to click the button
+window.initQuiz = initQuiz;
