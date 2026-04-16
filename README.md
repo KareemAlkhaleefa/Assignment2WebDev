@@ -33,31 +33,7 @@ The Assignment 2 codebase contains **2 JavaScript files**:
 
 ### Before Diagram
 
-```
-┌─────────────────────────────────────────────────────┐
-│                    index.html                        │
-│  <script type="module" src="script.js">              │
-└────────────────────────┬────────────────────────────┘
-                         │ imports
-          ┌──────────────▼──────────────────────────────────┐
-          │                   script.js  (~402 lines)        │
-          │  ─────────────────────────────────────────────   │
-          │  • Global state (score, lives, streak, timer)    │
-          │  • Keyboard event listeners                      │
-          │  • initQuiz()  — logo animation + countdown      │
-          │  • fetchData() — API call + DOM reads            │
-          │  • displayQuestionAndAnswers() — render + logic  │
-          │  • gameOver()  — end screen + localStorage       │
-          │  • startTimer() — interval + warning animation   │
-          │  • removeHeart() — DOM: lives display            │
-          │  • markDot()    — DOM: progress dots             │
-          └──────────────┬──────────────────────────────────┘
-                         │ imports
-          ┌──────────────▼──────────────┐
-          │         streak.js           │
-          │  • streakImage()            │
-          └─────────────────────────────┘
-```
+![Before: Monolithic Architecture](images/before.png)
 
 ---
 
@@ -106,32 +82,7 @@ The Assignment 2 codebase contains **2 JavaScript files**:
 
 ### After Diagram
 
-```
-┌──────────────────────────────────────────────────────┐
-│                    index.html                         │
-│  <script type="module" src="script.js">               │
-└─────────────────────┬────────────────────────────────┘
-                      │ imports
-     ┌────────────────▼────────────────────────────────┐
-     │              script.js  (orchestrator)           │
-     │  • Global state (score, lives, streak, etc.)     │
-     │  • Keyboard event listeners                      │
-     │  • initQuiz()   — game initialization            │
-     │  • nextQuestion() — question sequencing          │
-     │  • displayQuestionAndAnswers() — render + logic  │
-     │  • gameOver()   — end screen + localStorage      │
-     └────┬──────────────┬──────────────────┬──────────┘
-          │              │                  │
-          │ import       │ import           │ import
-  ┌───────▼──────┐ ┌─────▼──────────┐ ┌────▼──────────┐
-  │    api.js    │ │ui-controller.js│ │  streak.js    │
-  │ ──────────── │ │ ─────────────  │ │ ────────────  │
-  │ fetchData()  │ │ removeHeart()  │ │ streakImage() │
-  └──────────────┘ │ markDot()      │ └───────────────┘
-                   │ startTimer()   │
-                   │ clearTimer()   │
-                   └────────────────┘
-```
+![After: Modular Architecture](images/after.png)
 
 ---
 
