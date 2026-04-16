@@ -33,7 +33,7 @@ The Assignment 2 codebase contains **2 JavaScript files**:
 
 ### Before Diagram
 
-![Before: Monolithic Architecture](images/before.png)
+![Before: Monolithic Architecture](Images/before.png)
 
 ---
 
@@ -82,7 +82,7 @@ The Assignment 2 codebase contains **2 JavaScript files**:
 
 ### After Diagram
 
-![After: Modular Architecture](images/after.png)
+![After: Modular Architecture](Images/after.png)
 
 ---
 
